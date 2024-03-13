@@ -1,0 +1,16 @@
+start with the tables 
+- Then start do the relation 
+- add all models in the each model
+
+    * Id
+    * note
+    * starts_at
+    * ends_at
+    * duration
+    * user_id
+    * response:boolean (Null/TRUE/FALSE)
+    * response_by_id
+    * response_note
+    * created_at
+    * updated_at
+    
