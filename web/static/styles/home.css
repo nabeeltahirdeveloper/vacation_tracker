@@ -14,7 +14,7 @@ body {
 }
 
 /* Section Styles */
-nav{
+section{
     min-height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url("static/images/background.png");
     background-repeat: no-repeat;
