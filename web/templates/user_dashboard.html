@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/user_dashboard.css') }}">
+    <title>Vacation Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome {{fname}} {{lname}}</h1>
+        <div class="vacation-balance">
+            <h2>Vacation Available Balance:{{balance}}</h2>
+            <p>10 days</p> <!-- Example value, replace with actual available balance -->
+        </div>
+        <div class="vacation-balance">
+            <h2>Vacation Left Balance: {{balance}}</h2>
+            <p>5 days</p> <!-- Example value, replace with actual left balance -->
+        </div>
+        <button class="submit-btn">Submit a Vacation Request</button>
+    </div>
+</body>
+</html>

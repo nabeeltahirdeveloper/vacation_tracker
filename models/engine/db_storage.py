@@ -93,3 +93,18 @@ class DBStorage:
       if obj.first_name == first_name:
         return obj
     return None
+  
+  def get_user_by_email(self, email):
+    """Retrieves a user with the email from DB just for testing purposes"""
+    for obj in self.all(User).values():
+      if obj.email == email:
+        return obj
+    return None
+
+  def get_employment_by_user_id(self, user_id):
+    """Retrieves an employment with the user_id from DB just for testing purposes"""
+    for obj in self.all(Employment).values():
+      if obj.user_id == user_id:
+        return obj
+    return None
+  
