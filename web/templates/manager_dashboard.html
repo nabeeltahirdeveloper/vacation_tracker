@@ -117,6 +117,17 @@
             background-color: #ddd;
         }
 
+
+        .table-button {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .red-btn {
+            background-color: #f44336;
+        }
+
+
     </style>
 </head>
 <body>
@@ -136,46 +147,43 @@
         {% endif %}
         {% endwith %}
         <h1>Welcome {{fname}} {{lname}}</h1>
-        <div class="vacation-balance">
-            <h2>Vacation Available Balance:{{balance}}</h2>
-            <p>10 days</p>
-        </div>
-        <div class="vacation-balance">
-            <h2>Vacation Left Balance: {{current_balance}}</h2>
-            <p>5 days</p>
-        </div>
-        <form method="post" action="/apply-for-leave">
-            <div class="form-group">
-                <label for="start_date">Start Date</label>
-                <input type="date" id="start_date" name="start_date" required>
-            </div>
-            <div class="form-group">
-                <label for="end_date">End Date</label>
-                <input type="date" id="end_date" name="end_date" required>
-            </div>
-            <button type="submit" class="submit-btn">Submit a Vacation Request</button>
-        </form>
+        <hr/>
         <div>
             <h2>Vacation Requests</h2>
-            {% if userLeaves==None or userLeaves|length == 0 %}
+            {% if managerLeaves==None or managerLeaves|length == 0 %}
             <p>No vacation requests yet</p>
             {% else %}
             <table>
                 <thead>
                     <tr>
+                        <th>Email</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Days</th>
-                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for request in userLeaves %}
+                    {% for request in managerLeaves %}
                     <tr>
+                        <td>{{ request.email }}</td>
                         <td>{{ request.start_date }}</td>
                         <td>{{ request.end_date }}</td>
                         <td>{{ request.leave_days }}</td>
-                        <td>{{ request.status }}</td>
+                        <td class="table-button">
+                            <form action="/approve-leave" method="post">
+                                <input type="hidden" name="requestId" value="{{ request.id }}">
+                                <Button type="submit"  class="submit-btn">
+                                    Approve
+                                </Button>
+                            </form>
+                            <form action="/reject-leave" method="post">
+                                <input type="hidden" name="requestId" value="{{ request.id }}">
+                                <Button type="submit"  class="submit-btn red-btn">
+                                    Reject
+                                </Button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

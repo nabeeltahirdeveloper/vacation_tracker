@@ -11,11 +11,12 @@ from models.user import User
 from models.employment import Employment
 from models.request import Request
 from models.unit import Unit
+from models.leave_request import LeaveRequest
 import datetime
 
 # Create a connection to the database using SQLAlchemy's ORM
 
-classes = {"User": User, "Employment": Employment, "Request": Request, "Unit": Unit}
+classes = {"User": User, "Employment": Employment, "Request": Request, "Unit": Unit, "LeaveRequest": LeaveRequest}
 
 # Connect to Database and create a database session
 
@@ -94,6 +95,13 @@ class DBStorage:
         return obj
     return None
   
+  def get_user_by_id(self, id):
+    """Retrieves a user with the id from DB just for testing purposes"""
+    for obj in self.all(User).values():
+      if obj.id == id:
+        return obj
+    return None
+  
   def get_user_by_email(self, email):
     """Retrieves a user with the email from DB just for testing purposes"""
     for obj in self.all(User).values():
@@ -108,3 +116,37 @@ class DBStorage:
         return obj
     return None
   
+
+  def get_unit_id_by_name(self, name):
+    """Retrieves a unit with the name from DB just for testing purposes"""
+    for obj in self.all(Unit).values():
+      if obj.name == name:
+        return obj
+    return None
+  
+  def get_unit_id_by_id(self, id):
+    """Retrieves a unit with the id from DB just for testing purposes"""
+    for obj in self.all(Unit).values():
+      if obj.id == id:
+        return obj
+    return None
+  
+
+  def get_leaves_requests_by_user_id(self, user_id):
+    """Retrieves a leave request with the user_id from DB just for testing purposes"""
+    user_leaves = []
+    for obj in self.all(LeaveRequest).values():
+      print("obj.user_id", obj)
+      if obj.user_id == user_id:
+        user_leaves.append(obj)
+    
+    return user_leaves
+  
+  def get_leaves_requests_by_manager_id(self, manager_id):
+    """Retrieves a leave request with the manager_id from DB just for testing purposes"""
+    manager_leaves = []
+    for obj in self.all(LeaveRequest).values():
+      if obj.manager_id == manager_id and obj.status == "pending":
+        manager_leaves.append(obj)
+    
+    return manager_leaves

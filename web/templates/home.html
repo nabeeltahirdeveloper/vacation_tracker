@@ -5,7 +5,43 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
 
   <link rel="icon" href="{{url_for('static', filename='images/logo.ico')}}" type="image/png" />
-  
+  <style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
 
 </head>
@@ -13,6 +49,20 @@
   
   <section>
     <div class="container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div id="flashModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endwith %}
       <nav>
         <h1>Welcome to Vacation Tracker</h1>
 
@@ -29,6 +79,21 @@
       </div>
       </div>
   </section>
+  <script>
+    // When the user clicks on <span> (x), close the modal
+    var closeBtn = document.querySelector('.close');
+    if(closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('flashModal').style.display = "none";
+        });
+    }
 
+    // Automatically open the modal if it exists
+    window.onload = function() {
+        if(document.querySelector('.modal')) {
+            document.getElementById('flashModal').style.display = "block";
+        }
+    };
+</script>
 </body>
 </html>

@@ -17,8 +17,10 @@ class User(BaseModel, Base):
   phone = Column(String(14), nullable=False)
   title = Column(String(130), nullable=False)
   user_role = Column(String(130), nullable=False)
+  yearly_leave = Column(String(130), default=21, nullable=False)
   #head_user_id = Column(String(14), nullable=False)
   unit_id = Column(String(60), ForeignKey('units.id'), nullable=False)
+  head_user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
   
   def is_active(self):
     """is_active"""

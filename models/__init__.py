@@ -6,6 +6,7 @@ from models.user import User
 from models.employment import Employment
 from models.request import Request
 from models.unit import Unit
+from models.leave_request import LeaveRequest
 
 storage = DBStorage()
 storage.reload()

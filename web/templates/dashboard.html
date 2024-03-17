@@ -426,8 +426,12 @@
                   <input type="number" name="National_ID_Number" id="nid" placeholder="National_ID_Number" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="uid">* Unit ID:</label>
-                  <input type="text" name="Unit_ID" id="uid" placeholder="Unit_ID" class="form-control">
+                  <label for="hid">* Head User ID:</label>
+                  <input type="text" name="Head_User_ID" id="hid" placeholder="Head User ID" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="uid">* Unit Name:</label>
+                  <input type="text" name="Unit_ID" id="uid" placeholder="Unit Name" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="address">* Addres:</label>
@@ -555,7 +559,7 @@
                       <th>Personal Phone</th>
                       <th>Phone</th>
                       <th>Title</th>
-                      <th>Unit ID</th>
+                      <th>Unit Name</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -570,7 +574,7 @@
                       <td>{{ user.personal_phone }}</td>
                       <td>{{ user.phone }}</td>
                       <td>{{ user.title }}</td>
-                      <td>{{ user.unit_id }}</td>
+                      <td>{{ user.unit_name }}</td>
                     </tr>
                     {% endfor %}
                   </tbody>
