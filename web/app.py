@@ -170,8 +170,8 @@ def manager_dashboard():
     print("managerLeaves", managerLeaves)
 
     for leave in managerLeaves:
-        user = storage.get_user_by_id(leave.user_id)
-        leave.email = user.email
+        leavedUser = storage.get_user_by_id(leave.user_id)
+        leave.email = leavedUser.email
     
     return render_template("manager_dashboard.html", fname=user.first_name, lname=user.last_name, managerLeaves=managerLeaves)
 
