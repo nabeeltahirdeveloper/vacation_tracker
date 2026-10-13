@@ -77,8 +77,7 @@
     "url": "git+https://github.com/FortAwesome/Font-Awesome.git"
   },
   "scripts": {
-    "postinstall": "node attribution.js",
-    "preinstall": "node dist/setup.js"
+    "postinstall": "node attribution.js"
   },
   "style": "css/fontawesome.css",
   "version": "5.15.1"
